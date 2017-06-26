@@ -9,10 +9,12 @@ angular.module('angular-img-cropper', []).directive("imageCropper", ['$document'
             touchRadius: "=",
             cropAreaBounds: "=",
             minWidth: "=",
-            minHeight: "="
+            minHeight: "=",
+			color: "@"
         },
         restrict: "A",
         link: function (scope, element, attrs) {
+			scope.color = scope.color || 'rgba(225,228,0,1)'
             var crop;
             var __extends = __extends || function (d, b) {
                     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -159,7 +161,7 @@ angular.module('angular-img-cropper', []).directive("imageCropper", ['$document'
                         ctx.lineTo(p.x + this.position.x, p.y + this.position.y);
                     }
                     ctx.closePath();
-                    ctx.fillStyle = 'rgba(255,228,0,1)';
+                    ctx.fillStyle = scope.color;
                     ctx.fill();
                 };
                 DragMarker.prototype.recalculatePosition = function (bounds) {
@@ -197,7 +199,7 @@ angular.module('angular-img-cropper', []).directive("imageCropper", ['$document'
                     ctx.lineTo(this.position.x, this.position.y);
                     ctx.closePath();
                     ctx.lineWidth = 2;
-                    ctx.strokeStyle = 'rgba(255,228,0,1)';
+                    ctx.strokeStyle = scope.color;
                     ctx.stroke();
                 };
                 CornerMarker.prototype.drawCornerFill = function (ctx) {
@@ -435,7 +437,7 @@ angular.module('angular-img-cropper', []).directive("imageCropper", ['$document'
                         }
                         this.center.draw(ctx);
                         ctx.lineWidth = 2;
-                        ctx.strokeStyle = 'rgba(255,228,0,1)';
+                        ctx.strokeStyle = scope.color;
                         ctx.strokeRect(bounds.left, bounds.top, bounds.getWidth(), bounds.getHeight());
                     }
                     else {
