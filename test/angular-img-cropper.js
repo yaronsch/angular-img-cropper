@@ -10,7 +10,7 @@ angular.module('angular-img-cropper', []).directive("imageCropper", ['$document'
             cropAreaBounds: "=",
             minWidth: "=",
             minHeight: "=",
-			color: "@"
+            color: "@"
         },
         restrict: "A",
         link: function (scope, element, attrs) {
