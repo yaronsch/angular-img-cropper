@@ -10,11 +10,11 @@ angular.module('angular-img-cropper', []).directive("imageCropper", ['$document'
             cropAreaBounds: "=",
             minWidth: "=",
             minHeight: "=",
-			color: "@"
+	    color: "@"
         },
         restrict: "A",
         link: function (scope, element, attrs) {
-			scope.color = scope.color || 'rgba(225,228,0,1)'
+	    scope.color = scope.color || 'rgba(225,228,0,1)'
             var crop;
             var __extends = __extends || function (d, b) {
                     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
